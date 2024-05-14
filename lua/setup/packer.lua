@@ -12,12 +12,19 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }	
 
-  use ({ "rose-pine/neovim",
-	  as = "rose-pine",
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
-  })
+--  use ({ "rose-pine/neovim",
+--	  as = "rose-pine",
+--	  config = function()
+--		  vim.cmd('colorscheme rose-pine')
+--	  end
+--  })
+
+use ({'folke/tokyonight.nvim',as = "tokyonight"})
+-- Lua
+vim.cmd[[colorscheme tokyonight]]
+--colorscheme kanagawa
+--vim.cmd("colorscheme kanagawa")
+
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('theprimeagen/harpoon')
   use {
@@ -41,4 +48,11 @@ use {
   'nvim-lualine/lualine.nvim',
   requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 }
+
+require('lualine').setup {
+    options = {
+        theme = 'tokyonight'
+    }
+}
+
   end)
